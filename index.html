@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢喜少年领袖营社交平台</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .post {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #fafafa;
+    }
+    .post h3 {
+      margin: 0 0 10px;
+    }
+    .post p {
+      margin: 0;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>欢喜少年领袖营社交平台</h1>
+  </header>
+
+  <div class="container">
+    <h2>发布动态</h2>
+    <textarea id="postInput" placeholder="写下你的动态..."></textarea>
+    <button onclick="addPost()">发布</button>
+
+    <h2>动态</h2>
+    <div id="posts"></div>
+  </div>
+
+  <script>
+    const postsContainer = document.getElementById('posts');
+
+    function addPost() {
+      const postInput = document.getElementById('postInput');
+      const postText = postInput.value.trim();
+
+      if (postText === '') {
+        alert('动态内容不能为空！');
+        return;
+      }
+
+      const postElement = document.createElement('div');
+      postElement.className = 'post';
+      postElement.innerHTML = `
+        <h3>用户发布：</h3>
+        <p>${postText}</p>
+      `;
+
+      postsContainer.prepend(postElement); // 将新动态加到最上方
+      postInput.value = ''; // 清空输入框
+    }
+  </script>
+</body>
+</html>
